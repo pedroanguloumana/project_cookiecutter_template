@@ -1,4 +1,6 @@
 # true-neutral-cookiecutter
-A minimalist cookiecutter for research and data science projects
+A modified minimalist cookiecutter for research and data science projects. 
 
-Run via `cookiecutter gh:patrickmineault/true-neutral-cookiecutter`
+Based on the template by patrickmineault
+
+Run via `cookiecutter gh:pedroanguloumana/project_cookiecutter_template`
