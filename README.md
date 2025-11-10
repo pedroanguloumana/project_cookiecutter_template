@@ -12,6 +12,14 @@ This template is designed to consolidate practices I have adopted as a practicin
 
 As fluid as possible. 
 
+## Using this template
+Just run 
+```
+gh:pedroanguloumana/project_cookiecutter_template
+```
+
+and give the desired project name when prompted. 
+
 ## Making figures for the paper
 Inside ```/writing/```  is a blank Keynote presentation. To make the figures:
 1. Import panels from ```/figures/``` into the presentation. Each slide is a figure. 
