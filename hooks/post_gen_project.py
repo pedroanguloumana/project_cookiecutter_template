@@ -44,17 +44,20 @@ __________________________________________________________________________
 ⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⠏⠁⠁⠁⠁⠁⠁⠁⠁⠁⢸⡿⠯⠍⢓⣁⣀⣤⣄⡀⠁⠁⠁⣿⣶⣿⣿⢘⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣇⠁
 __________________________________________________________________________
 
-If you have not done so already, create a conda environment for your new 
-project with:
+IF YOU HAVE NOT DONE SO ALREADY, CREATE A CONDA ENVIRONMENT FOR YOUR NEW PROJECT WITH:
 
 cd {{cookiecutter.repo_name}}
 conda create --name {{cookiecutter.repo_name}}
 conda activate {{cookiecutter.repo_name}}
 
-Install your new project in your local conda environment with:
+INSTALL YOUR NEW PROJECT IN YOUR LOCAL CONDA ENVIRONMENT WITH:
 
 pip install -e .
 
-Don't forget to sync to GitHub. Have fun!
+HAVE FUN AND GOOD LUCK
+
+“TRUE UNDERSTANDING COMES ONLY THROUGH THE PROCESS OF THINKING ON YOUR OWN.”
+— 조훈현
+
 """
 print(help)
