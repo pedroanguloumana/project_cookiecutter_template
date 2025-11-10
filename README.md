@@ -15,7 +15,7 @@ As fluid as possible.
 ## Using this template
 Just run 
 ```
-gh:pedroanguloumana/project_cookiecutter_template
+cookiecutter gh:pedroanguloumana/project_cookiecutter_template
 ```
 
 and give the desired project name when prompted. 
