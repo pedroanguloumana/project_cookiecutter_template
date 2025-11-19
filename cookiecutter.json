@@ -1,6 +1,6 @@
 {
     "project_name": "project_name",
-    "repo_name": "{{ cookiecutter.project_name.lower().replace(' ', '_') }}",
-    "package_name": "src",
+    "repo_name": "{{cookiecutter.project_name.lower().replace(' ', '_')}}",
+    "package_name": "src_{{cookiecutter.repo_name}}",
     "description": "Python project based on the template from Pedro Angulo-Umana."
 }
