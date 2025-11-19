@@ -34,46 +34,53 @@ HAVE FUN AND GOOD LUCK
 
 """
 
+#!/usr/bin/env python3
 import os
 import sys
+import shutil
 from pathlib import Path
 
 def main():
     project_root = Path.cwd()  # This should be {{cookiecutter.repo_name}}/
     writing_path = project_root / "writing"
 
-    # Target directory: ~/LaTeX/<repo_name>
+    # Target directory: ~/LaTeX/<repo_name>_paper
     target_dir = Path.home() / "LaTeX" / "{{cookiecutter.repo_name}}_paper"
 
-    # Make sure target exists
+    # Ensure target exists
     try:
         target_dir.mkdir(parents=True, exist_ok=True)
     except OSError as e:
         print(f"Failed to create target directory {target_dir}: {e}", file=sys.stderr)
         return
 
-    # Remove existing "writing" if Cookiecutter created it as a real dir
-    if writing_path.is_symlink():
-        writing_path.unlink()
-    elif writing_path.exists():
-        # Only safe if it's empty; adjust if you expect contents
-        try:
-            writing_path.rmdir()
-        except OSError:
-            print(
-                f'"writing" is not empty, not replacing with symlink. '
-                f'Path: {writing_path}',
-                file=sys.stderr,
-            )
-            return
+    # ---- Move contents of writing/ into target_dir ----
+    if writing_path.exists() and writing_path.is_dir():
+        for item in writing_path.iterdir():
+            dest = target_dir / item.name
+            try:
+                shutil.move(str(item), str(dest))
+                print(f"Moved {item} -> {dest}")
+            except Exception as e:
+                print(f"Failed to move {item} -> {dest}: {e}", file=sys.stderr)
+                return
+    else:
+        print(f"No writing directory found at {writing_path}", file=sys.stderr)
 
-    # Create the symlink
+    # Remove original writing directory (should now be empty)
+    try:
+        writing_path.rmdir()
+    except OSError as e:
+        print(f"Failed to remove original writing directory {writing_path}: {e}", file=sys.stderr)
+        return
+
+    # ---- Create the symlink ----
     try:
         writing_path.symlink_to(target_dir)
         print(f"Created symbolic link: {writing_path} -> {target_dir}")
     except OSError as e:
         print(f"Failed to create symlink {writing_path} -> {target_dir}: {e}", file=sys.stderr)
 
+
 if __name__ == "__main__":
     main()
-    # print(help)
