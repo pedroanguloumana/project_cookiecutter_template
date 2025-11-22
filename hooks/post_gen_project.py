@@ -48,6 +48,9 @@ import shutil
 from pathlib import Path
 
 def main():
+
+    # The idea is to make /writing/ a symlink to another directory (that can then be separately uploaded to Overleaf, etc)
+    # and make within _that_ repo, have a symlink to the /figures/ file (QOL when using Keynote to make figs)
     project_root = Path.cwd()  # This should be {{cookiecutter.repo_name}}/
     writing_path = project_root / "writing"
     figs_path    = project_root / "figures"
@@ -61,13 +64,6 @@ def main():
         target_dir.mkdir(parents=True, exist_ok=True)
     except OSError as e:
         print(f"Failed to create target directory {target_dir}: {e}", file=sys.stderr)
-        return
-    
-    # Make figures subfolder
-    try:
-        figs_dir.mkdir(parents=True, exist_ok=True)
-    except OSError as e:
-        print(f"Failed to create target directory {figs_dir}: {e}", file=sys.stderr)
         return
     
     #  Move contents of writing/ into target_dir 
@@ -97,33 +93,13 @@ def main():
     except OSError as e:
         print(f"Failed to create symlink {writing_path} -> {target_dir}: {e}", file=sys.stderr)
 
-
-    # Do same thing for figures subfolder
-    if figs_path.exists() and figs_path.is_dir():
-        for item in figs_path.iterdir():
-            dest = figs_dir / item.name
-            try:
-                shutil.move(str(item), str(dest))
-                print(f"Moved {item} -> {dest}")
-            except Exception as e:
-                print(f"Failed to move {item} -> {dest}: {e}", file=sys.stderr)
-                return
-    else:
-        print(f"No figures directory found at {figs_path}", file=sys.stderr)
-
-    # Remove original writing directory (should now be empty)
+    # Now make a symlink from within the target dir back to /figures/
+    
     try:
-        figs_path.rmdir()
+        figs_dir.symlink_to(figs_path)
+        print(f"Created symbolic link: {figs_dir} -> {figs_path}")
     except OSError as e:
-        print(f"Failed to remove original writing directory {figs_path}: {e}", file=sys.stderr)
-        return
-
-    # ---- Create the symlink ----
-    try:
-        figs_path.symlink_to(figs_dir)
-        print(f"Created symbolic link: {figs_path} -> {figs_dir}")
-    except OSError as e:
-        print(f"Failed to create symlink {figs_path} -> {figs_dir}: {e}", file=sys.stderr)
+        print(f"Failed to create symlink {figs_dir} -> {figs_path}: {e}", file=sys.stderr)
 
     print(help)
 
