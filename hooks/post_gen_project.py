@@ -42,11 +42,6 @@ HAVE FUN AND GOOD LUCK
 """
 
 #!/usr/bin/env python3
-import os
-import sys
-import shutil
-import subprocess
-from pathlib import Path
 
 def main():
     print(help)
