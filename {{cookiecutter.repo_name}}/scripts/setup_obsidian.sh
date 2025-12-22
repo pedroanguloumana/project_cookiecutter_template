@@ -7,7 +7,7 @@ cd "$SCRIPT_DIR"
 
 repo_name="{{ cookiecutter.repo_name }}"
 
-project_folder_name="$HOME/Vaults/06-Project_Notes/$repo_name"
+project_folder_name="$HOME/Vault/06-Project_Notes/$repo_name"
 
 mkdir -p "$project_folder_name"
 
