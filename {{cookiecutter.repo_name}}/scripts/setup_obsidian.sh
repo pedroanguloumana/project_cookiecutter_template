@@ -1,5 +1,5 @@
 #!/usr/bin/env bash
-set -e
+set -euo pipefail
 
 ORIGINAL_DIR="$(pwd)"
 SCRIPT_DIR="$(cd -- "$(dirname -- "${BASH_SOURCE[0]}")" && pwd)"
@@ -7,11 +7,18 @@ cd "$SCRIPT_DIR"
 
 repo_name="{{ cookiecutter.repo_name }}"
 
-project_folder_name="$HOME/Vault/06-Project_Notes/$repo_name"
+vault_note_dir="$HOME/Vault/06-Project_Notes/$repo_name"
+repo_dir="$HOME/Projects/$repo_name"
 
-mkdir -p "$project_folder_name"
+mkdir -p "$vault_note_dir"
 
-ln -sf "$HOME/Projects/$repo_name/Progress_Log.md" "$project_folder_name/Progress_Log.md"
-ln -sfn "$HOME/Projects/$repo_name/figures"         "$project_folder_name/figures"
+# Create/overwrite the vault note with a header
+printf '# %s\n' "{{ cookiecutter.repo_name }}" > "$vault_note_dir/Progress_Log.md"
+
+# Symlink in the repo -> vault note
+ln -sf "$vault_note_dir/Progress_Log.md" "$repo_dir/Progress_Log.md"
+
+# Symlink in the vault -> repo figures directory
+ln -sfn "$repo_dir/figures" "$vault_note_dir/figures"
 
 cd "$ORIGINAL_DIR"
