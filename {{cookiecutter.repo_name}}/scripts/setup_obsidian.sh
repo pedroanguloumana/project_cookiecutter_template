@@ -16,6 +16,7 @@ mkdir -p "$vault_note_dir"
 printf '# %s\n' "{{ cookiecutter.repo_name }}" > "$vault_note_dir/Progress_Log.md"
 
 # Symlink in the repo -> vault note
+touch "$vault_note_dir/Progress_Log.md"
 ln -sf "$vault_note_dir/Progress_Log.md" "$repo_dir/Progress_Log.md"
 
 # Symlink in the vault -> repo figures directory
