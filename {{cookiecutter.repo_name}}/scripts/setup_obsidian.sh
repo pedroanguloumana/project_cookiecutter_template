@@ -10,7 +10,7 @@ SCRIPT_DIR="$(cd -- "$(dirname -- "${BASH_SOURCE[0]}")" && pwd)"
 # Move to script directory
 cd "$SCRIPT_DIR"
 # --- script logic here ---
-project_folder_name=~/Vaults/06-Project_Notes/{{ cookiecutter.repo_name }}"
+project_folder_name=~/Vaults/06-Project_Notes/{{ cookiecutter.repo_name }}
 
 mkdir {{ cookiecutter.repo_name }}
 
