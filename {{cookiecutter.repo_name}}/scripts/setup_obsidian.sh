@@ -10,12 +10,12 @@ SCRIPT_DIR="$(cd -- "$(dirname -- "${BASH_SOURCE[0]}")" && pwd)"
 # Move to script directory
 cd "$SCRIPT_DIR"
 # --- script logic here ---
-cd ~/Vaults/06-Project_Notes/
-project_folder_name={{cookiecutter.project_name.replace(' ', '_')}}
-mkdir $project_folder_name
+project_folder_name=~/Vaults/06-Project_Notes/{{ cookiecutter.repo_name }}"
 
-ln -s ~/Projects/{{cookiecutter.project_name.replace(' ', '_')}}/Progress_Log.md ~/Vaults/06-Project_Notes/$project_folder_name/Progress_Log.md
-ln -s ~/Projects/{{cookiecutter.project_name.replace(' ', '_')}}/figures/ ~/Vaults/06-Project_Notes/$project_folder_name/figures
+mkdir {{ cookiecutter.repo_name }}
+
+ln -s ~/Projects/{{cookiecutter.repo_name}}/Progress_Log.md ${{project_folder_name}}/Progress_Log.md
+ln -s ~/Projects/{{cookiecutter.repo_name}}/figures/ ${{project_folder_name}}/figures
 
 # Return to where the user was
 cd "$ORIGINAL_DIR"
