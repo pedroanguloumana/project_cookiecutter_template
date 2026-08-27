@@ -19,12 +19,3 @@ cookiecutter gh:pedroanguloumana/project_cookiecutter_template
 ```
 
 and give the desired project name when prompted. 
-
-## Making figures for the paper
-Inside ```/writing/```  is a blank Keynote presentation. To make the figures:
-1. Import panels from ```/figures/``` into the presentation. Each slide is a figure. 
-2. Once all the figures are made, run ```make``` from ```/writing/```. 
-3. If you want to edit figures, edit them in Keynote and run ```make``` again.  
-
-
-
