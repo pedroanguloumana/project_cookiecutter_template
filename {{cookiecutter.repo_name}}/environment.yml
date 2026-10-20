@@ -1,0 +1,14 @@
+channels:
+  - conda-forge
+
+dependencies:
+  - python
+  - pip
+  - ipykernel
+  - numpy
+  - scipy
+  - matplotlib
+  - xarray
+  - netcdf4
+  - h5py
+  - dask

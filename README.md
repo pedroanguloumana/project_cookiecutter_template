@@ -17,5 +17,4 @@ Just run
 ```
 cookiecutter gh:pedroanguloumana/project_cookiecutter_template
 ```
-
 and give the desired project name when prompted. 
