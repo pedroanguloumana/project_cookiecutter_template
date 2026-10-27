@@ -20,3 +20,4 @@ python -m pip install -e .
 
 Add project-specific dependencies to `environment.yml` and update the environment with
 `conda env update --name {{ cookiecutter.repo_name }} --file environment.yml`.
+y
